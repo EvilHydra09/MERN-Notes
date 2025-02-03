@@ -7,6 +7,29 @@ const sendEmail = require("../utils/mailer"); // Import mailer
 const router = express.Router();
 
 // Register User
+
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+// Register User
+
 router.post("/register", async (req, res) => {
     try {
         console.log("Received body:", req.body); // Debugging
@@ -19,7 +42,9 @@ router.post("/register", async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        const newUser = new User({ name, email, password: hashedPassword });
+        const newUser = new 
+        ({ name, email, password: hashedPassword });
+        
         await newUser.save();
 
         
