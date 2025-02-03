@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const sendEmail = require("../utils/mailer"); // Import mailer
 
 const router = express.Router();
 
@@ -21,7 +22,16 @@ router.post("/register", async (req, res) => {
         const newUser = new User({ name, email, password: hashedPassword });
         await newUser.save();
 
-        res.status(201).json({ message: "User registered" });
+        
+          // ✅ Send Welcome Email
+          await sendEmail(
+            email,
+            "Welcome to Our Platform 🎉",
+            `Hi ${name}, welcome to our app!`,
+            `<h1>Hi ${name},</h1><p>Welcome to our app! 🚀</p>`
+        );
+
+        res.status(201).json({ message: "User registered and email sent" });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: err.message });
