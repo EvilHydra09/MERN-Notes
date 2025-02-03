@@ -4,7 +4,7 @@ const authMiddleware = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-// Create Note with Basic Validation
+// Create Note with Basic Validation and done by developer nishant
 router.post("/", authMiddleware, async (req, res) => {
     const { title, content } = req.body;
 
